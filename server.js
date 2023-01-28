@@ -15,4 +15,4 @@ app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}!`);
   // dont reset database with changes made
   sequelize.sync({ force: false });
-})
+});
