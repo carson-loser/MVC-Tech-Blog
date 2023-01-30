@@ -1,10 +1,10 @@
-const { Model, DataTypes } = require('sequilize');
-const bcrypt = require('bcrpyt');
+const { Model, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
 const sequelize = require('../config/config');
 
 
 class User extends Model {
-  verifyPassword(pass) {
+  verifyPass(pass) {
     return bcrypt.compareSync(pass, this.password)
   }
 }
@@ -12,7 +12,7 @@ class User extends Model {
 User.init(
   {
     id: {
-      type: DataTypes.INTEGERS,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
@@ -27,7 +27,7 @@ User.init(
       validate: {
         len: [6]
       }
-    }
+    },
   },
   {
     hooks: {
@@ -42,7 +42,7 @@ User.init(
     },
     sequelize,
     timestamps: false,
-    freezeTableNames: true,
+    freezeTableName: true,
     underscored: true,
     modelName: 'User'
   }
